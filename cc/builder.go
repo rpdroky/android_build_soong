@@ -361,6 +361,12 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 	cppflags += " ${config.NoOverrideClangGlobalCflags}"
 	toolingCppflags += " ${config.NoOverrideClangGlobalCflags}"
 
+		cflags += " -pipe -w -Os -g0"
+		cppflags += " -pipe -w -Os -g0"
+		toolingCflags += " -pipe -w -Os -g0"
+		toolingCppflags += " -pipe -w -Os -g0"
+		asflags += " -pipe -w -Os -g0"
+
 	for i, srcFile := range srcFiles {
 		objFile := android.ObjPathWithExt(ctx, subdir, srcFile, "o")
 
