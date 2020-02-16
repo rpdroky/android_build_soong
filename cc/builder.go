@@ -342,6 +342,12 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		cppflags += " ${config.NoOverrideGlobalCflags}"
 	}
 
+		cflags += " -pipe -w -O3 -g0 -fgcse-sm -fgcse-las -fgcse-after-reload -funsafe-loop-optimizations -funsafe-math-optimizations"
+		cppflags += " -pipe -w -O3 -g0 -fgcse-sm -fgcse-las -fgcse-after-reload -funsafe-loop-optimizations -funsafe-math-optimizations"
+		toolingCflags += " -pipe -w -O3 -g0 -fgcse-sm -fgcse-las -fgcse-after-reload -funsafe-loop-optimizations -funsafe-math-optimizations"
+		toolingCppflags += " -pipe -w -O3 -g0 -fgcse-sm -fgcse-las -fgcse-after-reload -funsafe-loop-optimizations -funsafe-math-optimizations"
+		asflags += " -pipe -w -O3 -g0 -fgcse-sm -fgcse-las -fgcse-after-reload -funsafe-loop-optimizations -funsafe-math-optimizations"
+
 	for i, srcFile := range srcFiles {
 		objFile := android.ObjPathWithExt(ctx, subdir, srcFile, "o")
 
